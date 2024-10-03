@@ -19,7 +19,7 @@ const float Temperature = 2600.0;  // You can adjust this value for different le
 /**
  * Strength of filter.
  */
-const float Strength = 0.5;  // Adjust the filter strength (0.0 for no effect, 1.0 for full effect)
+const float Strength = 0.3;  // Adjust the filter strength (0.0 for no effect, 1.0 for full effect)
 
 #define WithQuickAndDirtyLuminancePreservation
 const float LuminancePreservationFactor = 1.0;
