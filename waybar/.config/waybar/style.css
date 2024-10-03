@@ -1,1 +1,143 @@
-../../dotfiles/waybar/.config/waybar/style.css
+/*
+* Gruvbox palette
+*/
+
+@define-color base #282828;
+@define-color mantle #1d2021;
+@define-color crust #1c1c1c;
+
+@define-color text #ebdbb2;
+@define-color subtext0 #d5c4a1;
+@define-color subtext1 #bdae93;
+
+@define-color surface0 rgba(30, 30, 30, 0.9);
+@define-color surface1 #3c3836;
+@define-color surface2 #504945;
+@define-color surface3 #7c6f64;
+
+@define-color overlay0 #928374;
+@define-color overlay1 #a89984;
+@define-color overlay2 #d5c4a1;
+
+@define-color blue #83a598;
+@define-color lavender #d3869b;
+@define-color sapphire #8ec07c;
+@define-color sky #83c992;
+@define-color teal #8ec07c;
+@define-color green #b8bb26;
+@define-color yellow #fabd2f;
+@define-color peach #fe8019;
+@define-color maroon #fb4934;
+@define-color red #fb4934;
+@define-color mauve #b16286;
+@define-color pink #d3869b;
+@define-color flamingo #d65d0e;
+@define-color rosewater #f9f5d7;
+
+/* =============================== */
+/* Universal Styling */
+* {
+  border: none;
+  border-radius: 0;
+  font-family: 'CaskaydiaCove Nerd Font', monospace;
+  font-size: 13px;
+  min-height: 0;
+}
+
+/* =============================== */
+
+
+/* =============================== */
+/* Bar Styling */
+#waybar {
+  background: transparent; /* Keep bar transparent */
+  color: @text;
+}
+
+/* =============================== */
+
+
+/* =============================== */
+/* Main Modules */
+#custom-launcher,
+#workspaces,
+#window,
+#tray,
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#mpd,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#custom-music,
+#custom-updates,
+#custom-nordvpn,
+#custom-notifications,
+#custom-power,
+#custom-custom,
+#custom-cycle_wall,
+#custom-clipboard,
+#custom-ss,
+#custom-weather {
+  background-color: @surface0;
+  color: @text;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.116) 2px 2px 5px 2px;
+  margin-top: 10px;
+  margin-right: 15px; /* Increased right margin for spacing */
+}
+
+/* =============================== */
+/* Launcher Module */
+#custom-launcher {
+  color: @green;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 10px;
+}
+
+/* =============================== */
+/* Workspaces */
+#workspaces {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#workspaces * {
+  font-size: 0px;
+}
+
+#workspaces button {
+  background-color: @surface3;
+  color: @peach; /* Change workspace dots to light orange */
+  border-radius: 100%;
+  min-height: 14px;
+  min-width: 14px;
+  margin: 5px 10px; /* Increased spacing between dots */
+  padding: 0px;
+  transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.68);
+  box-shadow: rgba(0, 0, 0, 0.288) 2px 2px 5px 2px;
+}
+
+#workspaces button.active {
+  background: radial-gradient(circle, rgba(248, 162, 58, 1) 0%, rgba(248, 134, 34, 1) 12%, rgba(250, 200, 100, 1) 19%);
+  background-size: 400% 400%;
+  animation: gradient_f 20s ease-in-out infinite;
+  transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#workspaces button:hover {
+  background-color: @mauve;
+}
+
+/* =============================== */
+
+
+/* Other Modules (remains unchanged) */
+/* ... */
+
