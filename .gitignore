@@ -3,4 +3,4 @@ tmux/.tmux/plugins/tmux-gruvbox/
 tmux/.tmux/plugins/tmux-resurrect/
 tmux/.tmux/plugins/tmux-sensible/
 tmux/.tmux/plugins/vim-tmux-navigator/
-
+.bashrc
