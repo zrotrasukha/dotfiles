@@ -1,16 +1,6 @@
 // gruvbox version
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    //"gtk-layer-shell": "false",
-    "height": 45, // Waybar height (to be removed for auto height)
-    // "width": 2560, // Waybar width
-    "spacing": 0, // Gaps between modules (0px) Adjusted in the css
-    "margin-top": 0,
-    //"margin-bottom":-10,
-    "margin-left": 10,
-    "margin-right": 10,
-    // Choose the order of the modules
+    "layer": "top", // Waybar at top layer "position": "top", // Waybar position (top|bottom|left|right) "gtk-layer-shell": "false", "height": 45, // Waybar height (to be removed for auto height) "width": 2560, // Waybar width "spacing": 0, // Gaps between modules (0px) Adjusted in the css "margin-top": 0, "margin-bottom":-10, "margin-left": 10, "margin-right": 10, Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
         // "cpu",
@@ -132,7 +122,7 @@
         "tooltip-format-disconnected": "{icon} Disconnected",
         "on-click-right": "nm-connection-editor",
         "format-icons": {
-            "ethernet": "",
+            "ethernet": "󰈀",
             "disconnected": "⚠",
             "wifi": [
                 "睊",
@@ -145,13 +135,13 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}%", // {format_source}
         "format-bluetooth": "{icon} {volume}%", // {format_source}
-        "format-bluetooth-muted": "", // {format_source}
+        "format-bluetooth-muted": "", // {format_source}
         "format-muted": "", // {format_source}
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
-            "headset": "",
+            "headphone": "",
+            "headset": "󰋎",
             "phone": "",
             "portable": "",
             "car": " ",
@@ -195,15 +185,15 @@
         "format-full": " {capacity}%",
         "format-icons": [
             "",
+            "",
+            "",
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
+            "",
+            "", 
+            "",
             "",
             "",
-            ""
+            ""
         ],
         "interval": 2
     },

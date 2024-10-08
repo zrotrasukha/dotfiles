@@ -90,7 +90,7 @@ keymap.set("n", "<leader>ont", ":ObsidianNewFromTemplate<CR>", opts)
 keymap.set("n", "<leader>otoc", ":ObsidianTOC<CR>", opts)
 
 -- Prevent "dd" from copying to clipboard
-keymap.set("n", "dd", '"_dd', opts)
+-- keymap.set("n", "dd", '"_dd', opts)
 
 -- Delete character without copying to clipboard
 keymap.set("n", "X", '"_x', opts)

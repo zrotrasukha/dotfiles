@@ -106,6 +106,12 @@ ls.add_snippets("javascript", {
   }),
 })
 
+--HTML snippets--
+ls.add_snippets("html", {
+  s("axios", {
+    t('  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>'),
+  }),
+})
 -- JavaScriptReact snippets
 ls.add_snippets("javascriptreact", {
   s("clog", {

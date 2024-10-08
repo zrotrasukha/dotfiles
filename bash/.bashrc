@@ -61,29 +61,51 @@ bton() {
 btoff() {
   bluetoothctl power off
 }
-eval "$(starship init bash)"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-alias plugs="nvim ~/.config/nvim/lua/plugins/"
+eval "$(starship init bash)"
 alias sb="source ~/.bashrc"
-alias b="nvim ~/.bashrc"
+alias v="nvim"
+alias lss="pactl list short sinks"
+alias c="clear"
+alias ccp="cliphist wipe"
+alias rd="hyprctl reload"
+alias sus="systemctl suspend"
+alias ncs="nmcli connection show"
+alias open="xdg-open"
+alias cfp="pwd | wl-copy"
+#-------------------------------
+# Tmux
 alias t="tmux"
 alias ta="tmux a"
 alias tns="tmux new-session -s"
 alias tks="tmux kill-session -t"
 alias tka="tmux kill-server"
-alias v="nvim"
-alias lss="pactl list short sinks"
-alias c="clear"
-alias ccp="cliphist wipe"
+alias tas="tmux a -t"
+#-------------------------------
+#coding files
 alias way="v ~/.config/waybar"
+alias b="nvim ~/.bashrc"
+alias plugs="nvim ~/.config/nvim/lua/plugins/"
 alias conf="nvim ~/.config/hypr/hyprland.conf"
-alias rd="hyprctl reload"
-alias sus="systemctl suspend"
-alias ncs="nmcli connection show"
+alias obs="nvim /home/zrotrasukha/MEGA/MEGA/Knowledge_and_Info"
 alias blue="nvim .config/hypr/shaders/blue-light-filter.glsl"
-alias open="xdg-open"
-alias cfp="pwd | wl-copy"
-alias obs="nvim /home/zrotrasukha/MEGA/MEGA/Knowledge_and_Inf"
+alias 100="yazi /home/zrotrasukha/MEGA/MEGA/100xDev"
+#fzf-------------------
+alias f='fzf --preview="bat --color=always {}"'
+alias fn='nvim $(fzf --preview="bat --color=always {}")'
+alias fy='yazi $(fzf --preview="bat --color=always {}")'
+#sites-----------------
+alias 100x='xdg-open https://app.100xdevs.com/courses/14'
+alias yt='xdg-open https://www.youtube.com'
+alias amigo="xdg-open https://amigo.amityonline.com/my/"
+#Tmux-------------------
+alias td="tmux resize-pane -D"
+alias tu="tmux resize-pane -U"
+alias tr="tmux resize-pane -R"
+alias tl="tmux resize-pane -L"
+#layout-----------------
+alias us='hyprctl keyword input:kb_variant "us"'
+alias cl='hyprctl keyword input:kb_variant "colemak"'
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
