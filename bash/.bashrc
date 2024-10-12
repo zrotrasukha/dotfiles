@@ -98,6 +98,7 @@ alias fy='yazi $(fzf --preview="bat --color=always {}")'
 alias 100x='xdg-open https://app.100xdevs.com/courses/14'
 alias yt='xdg-open https://www.youtube.com'
 alias amigo="xdg-open https://amigo.amityonline.com/my/"
+alias mdb="xdg-open https://www.mongodb.com/docs/manual/tutorial/install-mongodb-community-with-docker/"
 #Tmux-------------------
 alias td="tmux resize-pane -D"
 alias tu="tmux resize-pane -U"
@@ -106,7 +107,31 @@ alias tl="tmux resize-pane -L"
 #layout-----------------
 alias us='hyprctl keyword input:kb_variant "us"'
 alias cl='hyprctl keyword input:kb_variant "colemak"'
+#mongodb----------------
+alias dp='sudo docker pull mongodb/mongodb-community-server:latest'
 
+drun() {
+  local name=${1:-mongodb} # Default to "mongodb" if no name is provided
+  local port=${2:-27017}   # Default to port 27017 if no port is provided
+  sudo docker run -d --name "$name" -p "$port:27017" mongodb/mongodb-community-server:latest
+}
+
+darn() {
+  sudo docker run --rm -it mongo mongosh "mongodb+srv://cluster0.7xf16.mongodb.net/" --apiVersion 1 --username zrotrasukha
+}
+# Function to run mongosh with a custom port
+msh() {
+  local name=${1:-mongodb} # Default to "mongodb" if no name is provided
+  local port=${2:-27017}   # Default to port 27017 if no port is provided
+  sudo docker exec -it "$name" mongosh "mongodb://localhost:$port"
+}
+
+drm() {
+  local session=${1:mongodb}
+  sudo docker rm -f "$session"
+}
+alias dps="sudo docker ps"
+#----------------------
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 eval "$(fzf --bash)"
@@ -115,5 +140,4 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
-
 export PATH=$PATH:/home/zrotrasukha/.spicetify
