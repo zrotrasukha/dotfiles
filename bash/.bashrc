@@ -1,5 +1,7 @@
 # .bashrc
 
+# bindings
+set -o vi
 # Source global definitions
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
@@ -61,6 +63,9 @@ bton() {
 btoff() {
   bluetoothctl power off
 }
+
+alias snips="nvim /home/zrotrasukha/dotfiles/nvim/.config/nvim/lua/config/luasnip.lua"
+alias dots="cd ~/dotfiles"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init bash)"
 alias sb="source ~/.bashrc"
@@ -109,21 +114,74 @@ alias us='hyprctl keyword input:kb_variant "us"'
 alias cl='hyprctl keyword input:kb_variant "colemak"'
 #mongodb----------------
 alias dp='sudo docker pull mongodb/mongodb-community-server:latest'
-
+alias keys='nvim /home/zrotrasukha/dotfiles/nvim/.config/nvim/lua/config/keymaps.lua'
 drun() {
   local name=${1:-mongodb} # Default to "mongodb" if no name is provided
   local port=${2:-27017}   # Default to port 27017 if no port is provided
-  sudo docker run -d --name "$name" -p "$port:27017" mongodb/mongodb-community-server:latest
+  local filePath=${3:-~/mongoExport}
+  # sudo docker run -d --name "$name" -p "$port:27017" mongodb/mongodb-community-server:latest
+  sudo docker run --name "$name" \
+    -v "$filePath":/data \
+    -p "$port":27017 \
+    -d mongo:latest
 }
 
 darn() {
-  sudo docker run --rm -it mongo mongosh "mongodb+srv://cluster0.7xf16.mongodb.net/" --apiVersion 1 --username zrotrasukha
+  local name=${1:-mongodb}
+  sudo docker run --rm --name "$name" -it mongo mongosh "mongodb+srv://cluster0.7xf16.mongodb.net/" --apiVersion 1 --username zrotrasukha
 }
+dexp() {
+  local dbName=${1:-test}
+  local collectionName=${2:-users}
+  local fileName=${3:-$collectionName.json}
+
+  sudo docker run --rm -v $(pwd):/data -it mongo bash -c \
+    "mongoexport --uri='mongodb+srv://cluster0.7xf16.mongodb.net/$dbName' --collection $collectionName --out /data/$fileName --jsonArray --username zrotrasukha"
+}
+alias db="cd ~/dockstore"
+dimp() {
+  local dbName=${1:-test}
+  local collectionName=${2:-users}
+  local fileName=${3:-$collectionName.json}
+
+  sudo docker run --rm -v $(pwd):/data -it mongo bash -c \
+    "mongoimport --uri='mongodb+srv://cluster0.7xf16.mongodb.net/$dbName' --collection $collectionName --file /data/$fileName --jsonArray --username zrotrasukha"
+}
+
 # Function to run mongosh with a custom port
 msh() {
   local name=${1:-mongodb} # Default to "mongodb" if no name is provided
   local port=${2:-27017}   # Default to port 27017 if no port is provided
-  sudo docker exec -it "$name" mongosh "mongodb://localhost:$port"
+  sudo docker exec -it "$name" mongosh
+}
+
+mim() {
+  local name=${1:-mongodb} # Default to "mongodb" if no container name is provided
+  local type=${2:-json}    # Default import type to "json" if not provided
+  local database=${3:-}    # Default to null/empty
+  local collection=${4:-}  # Default to null/empty
+  local filePath=${5:-}    # Default to null/empty
+
+  # Build the mongoimport command dynamically based on provided values
+  cmd="sudo docker exec -it \"$name\" mongoimport --type \"$type\""
+
+  # Append database option if provided
+  if [[ -n "$database" ]]; then
+    cmd+=" --db \"$database\""
+  fi
+
+  # Append collection option if provided
+  if [[ -n "$collection" ]]; then
+    cmd+=" --collection \"$collection\""
+  fi
+
+  # Append filePath option if provided
+  if [[ -n "$filePath" ]]; then
+    cmd+=" --file \"$filePath\""
+  fi
+
+  # Run the constructed command
+  eval "$cmd"
 }
 
 drm() {
@@ -136,7 +194,8 @@ alias dps="sudo docker ps"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 eval "$(fzf --bash)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
+export EDITOR=nvim
+export VISUAL=nvim
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH

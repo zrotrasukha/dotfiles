@@ -3,9 +3,9 @@ local opts = { noremap = true, silent = true }
 
 -- visual delete: no clipboard:
 vim.api.nvim_set_keymap("v", "d", '"_d', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "p", '"0p', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "p", '"0p', { noremap = true, silent = true })
-
+-- vim.api.nvim_set_keymap("n", "p", '"0p', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("v", "p", '"0p', { noremap = true, silent = true })
+--
 -- backspace with ctrl
 keymap.set("i", "<C-h>", "<C-w>", opts)
 keymap.set("n", "<C-h>", "<C-w>", opts)
@@ -93,7 +93,7 @@ keymap.set("n", "<leader>otoc", ":ObsidianTOC<CR>", opts)
 -- keymap.set("n", "dd", '"_dd', opts)
 
 -- Delete character without copying to clipboard
-keymap.set("n", "X", '"_x', opts)
+-- keymap.set("n", "X", '"_x', opts)
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>", opts)

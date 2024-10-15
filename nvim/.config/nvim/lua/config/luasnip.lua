@@ -104,6 +104,9 @@ ls.add_snippets("javascript", {
     t("-H "),
     i(2, "header"),
   }),
+  s("mongoURI", {
+    t("mongodb+srv://zrotrasukha:databasemyassbruv@cluster0.7xf16.mongodb.net/"),
+  }),
 })
 
 --HTML snippets--

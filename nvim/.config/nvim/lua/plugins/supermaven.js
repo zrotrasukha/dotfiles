@@ -1,4 +1,4 @@
-return {
+eturn {
   {
     {
       "supermaven-inc/supermaven-nvim",
