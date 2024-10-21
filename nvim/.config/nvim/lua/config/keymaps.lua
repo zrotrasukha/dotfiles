@@ -111,12 +111,6 @@ keymap.set("n", "<leader>Q", ":qa<CR>", opts)
 keymap.set("n", "<leader>f", ":NvimTreeFindFile<CR>", opts)
 keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
 
--- Tabs
-keymap.set("n", "te", ":tabedit<CR>", opts)
-keymap.set("n", "<tab>", ":tabnext<CR>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<CR>", opts)
-keymap.set("n", "tw", ":tabclose<CR>", opts)
-
 -- Split window
 keymap.set("n", "ss", ":split<CR>", opts)
 keymap.set("n", "sv", ":vsplit<CR>", opts)
@@ -128,31 +122,41 @@ keymap.set("n", "sj", "<C-w>j", opts)
 keymap.set("n", "sl", "<C-w>l", opts)
 
 -- Resize window
-keymap.set("n", "<C-S-h>", "<C-w><", opts)
-keymap.set("n", "<C-S-l>", "<C-w>>", opts)
+keymap.set("n", "<C-A-h>", "<C-w><", opts)
+keymap.set("n", "<C-A-l>", "<C-w>>", opts)
 keymap.set("n", "<C-S-k>", "<C-w>+", opts)
 keymap.set("n", "<C-S-j>", "<C-w>-", opts)
 
 -- Diagnostics
-keymap.set("n", "<C-j>", function()
+keymap.set("n", "<C-A-j>", function()
   vim.diagnostic.goto_next()
 end, opts)
 
 -- Save file
-keymap.set("n", "<leader>s", ":w<CR>", opts)
+-- Save current file and show notification
+keymap.set("n", "<leader>s", function()
+  vim.cmd("w")
+  vim.notify("File saved!", vim.log.levels.INFO)
+end, opts)
+
+-- Save all files and show notification
+keymap.set("n", "<leader>S", function()
+  vim.cmd("wa")
+  vim.notify("All files saved!", vim.log.levels.INFO)
+end, opts)
 
 -- Automate Compilation and Execution with a Keybinding
-keymap.set("n", "<F5>", ":!g++ % -o %< && ./%< <CR>", { noremap = true, silent = true })
+keymap.set("n", "<F5>", ":!g++ % -o %< && ./%< <CR>", opts)
 
 -- Code Runner
-keymap.set("n", "<leader>r", ":RunCode<CR>", { noremap = true, silent = true })
-keymap.set("n", "<leader>rf", ":RunFile<CR>", { noremap = true, silent = true })
-keymap.set("n", "<leader>rft", ":RunFile tab<CR>", { noremap = true, silent = true })
-keymap.set("n", "<leader>rp", ":RunProject<CR>", { noremap = true, silent = true })
-keymap.set("n", "<leader>rc", ":RunClose<CR>", { noremap = true, silent = true })
-keymap.set("n", "<leader>crf", ":CRFiletype<CR>", { noremap = true, silent = true })
-keymap.set("n", "<leader>crp", ":CRProjects<CR>", { noremap = true, silent = true })
-
+keymap.set("n", "<leader>r", ":RunCode<CR>", opts)
+keymap.set("n", "<leader>rf", ":RunFile<CR>", opts)
+keymap.set("n", "<leader>rft", ":RunFile tab<CR>", opts)
+keymap.set("n", "<leader>rp", ":RunProject<CR>", opts)
+keymap.set("n", "<leader>rc", ":RunClose<CR>", opts)
+keymap.set("n", "<leader>crf", ":CRFiletype<CR>", opts)
+keymap.set("n", "<leader>crp", ":CRProjects<CR>", opts)
+-- keymap.set("n", "<leader>e", ":Oil<CR>", opts)
 -- Move line up
 keymap.set("n", "<A-Up>", ":m .-2<CR>==", opts)
 keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", opts)
@@ -169,7 +173,7 @@ keymap.set("n", "<leader>rw", ":%s/<C-r><C-w>/<C-r><C-w>/g<CR>", opts)
 keymap.set("v", "<leader>rw", ":s/<C-r><C-w>/<C-r><C-w>/g<CR>", opts)
 
 -- Enter command-line mode with \ (backslash)
-keymap.set("n", "<leader>c", ":", opts)
+keymap.set("n", "<leader>c", ":", { noremap = true, silent = false })
 
 -- Select next occurrence
 keymap.set("n", "<leader>rn", ":s/<C-r><C-w>/<C-r><C-w>/g<CR>", opts)
@@ -219,104 +223,58 @@ vim.api.nvim_set_keymap(
   "n", -- Mode: Normal mode
   "<leader>cp", -- Shortcut: Leader key followed by 'cp'
   [[:let @+=expand('%:p:h')<CR>]], -- Command: Copy the file directory of the current buffer to the clipboard
-  { noremap = true, silent = true } -- Options: No remap, silent execution
+  opts -- Options: No remap, silent execution
 )
 
 -- Set leader key to space (optional)
 
 -- Add file to marks
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>ha",
-  ":lua require('harpoon.mark').add_file()<CR>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>", opts)
 
 -- Show all marks (quick menu)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>m",
-  ":lua require('harpoon.ui').toggle_quick_menu()<CR>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>m", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
 
 -- Navigate to specific marks (e.g., file 1, file 2, file 3)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>1",
-  ":lua require('harpoon.ui').nav_file(1)<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>2",
-  ":lua require('harpoon.ui').nav_file(2)<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>3",
-  ":lua require('harpoon.ui').nav_file(3)<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>4",
-  ":lua require('harpoon.ui').nav_file(4)<CR>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>1", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>4", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>5", ":lua require('harpoon.ui').nav_file(5)<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>6", ":lua require('harpoon.ui').nav_file(6)<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>7", ":lua require('harpoon.ui').nav_file(7)<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>8", ":lua require('harpoon.ui').nav_file(8)<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>9", ":lua require('harpoon.ui').nav_file(9)<CR>", opts)
 
 -- Navigate to next and previous marks
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>n",
-  ":lua require('harpoon.ui').nav_next()<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>p",
-  ":lua require('harpoon.ui').nav_prev()<CR>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>n", ":lua require('harpoon.ui').nav_next()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>p", ":lua require('harpoon.ui').nav_prev()<CR>", opts)
 
 -- Terminal navigation (e.g., terminal 1, terminal 2)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>t1",
-  ":lua require('harpoon.term').gotoTerminal(1)<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>t2",
-  ":lua require('harpoon.term').gotoTerminal(2)<CR>",
-  { noremap = true, silent = true }
-)
-
+vim.api.nvim_set_keymap("n", "<leader>t1", ":lua require('harpoon.term').gotoTerminal(1)<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>t2", ":lua require('harpoon.term').gotoTerminal(2)<CR>", opts)
 -- Send command to terminal (e.g., send `ls -La` to terminal 1)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>lc",
-  ":lua require('harpoon.term').sendCommand(1, 'ls -La')<CR>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>lc", ":lua require('harpoon.term').sendCommand(1, 'ls -La')<CR>", opts)
 
 -- Tmux navigation (e.g., tmux window 1)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>x1",
-  ":lua require('harpoon.tmux').gotoTerminal(1)<CR>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>x1", ":lua require('harpoon.tmux').gotoTerminal(1)<CR>", opts)
 
 -- Send command to tmux terminal (e.g., send `ls -La` to tmux window 1)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>xc",
-  ":lua require('harpoon.tmux').sendCommand(1, 'ls -La')<CR>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>xc", ":lua require('harpoon.tmux').sendCommand(1, 'ls -La')<CR>", opts)
 
 -- Telescope support for harpoon marks
-vim.api.nvim_set_keymap("n", "<leader>fm", ":Telescope harpoon marks<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>fm", ":Telescope harpoon marks<CR>", opts)
+
+-- Telescope file browser
+vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
+
+-- open file_browser with the path of the current buffer
+vim.keymap.set("n", "<space>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
+
+-- Alternatively, using lua API
+vim.keymap.set("n", "<space>fb", function()
+  require("telescope").extensions.file_browser.file_browser()
+end)
+
+-- vim.api.nvim_set_keymap("n", "p", '"0p', { noremap = true, silent = true })
+keymap.set("n", "<leader>.", "<leader>:!", { noremap = true, silent = false })
+keymap.set("n", "<A-o>", ":Oil --float %:p:h<CR>", opts)

@@ -48,6 +48,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:$PWD/lua_env/bin"
 export TREESITTER_DIR=~/.local/share/nvim/site/pack/packer/start/nvim-treesitter/parser
 #alias
+alias y="yazi"
 alias blueon="hyprshade on blue-light-filter" #bluelight
 alias bo="hyprshade on blue-light-filter"     #bluelight
 alias blueoff="hyprshade off"
@@ -94,9 +95,9 @@ alias plugs="nvim ~/.config/nvim/lua/plugins/"
 alias conf="nvim ~/.config/hypr/hyprland.conf"
 alias obs="nvim /home/zrotrasukha/MEGA/MEGA/Knowledge_and_Info"
 alias blue="nvim .config/hypr/shaders/blue-light-filter.glsl"
-alias 100="yazi /home/zrotrasukha/MEGA/MEGA/100xDev"
+alias 100="cd /home/zrotrasukha/MEGA/MEGA/100xDev"
 #fzf-------------------
-alias f='fzf --preview="bat --color=always {}"'
+alias f='cd $( fzf --preview="bat --color=always {}" )'
 alias fn='nvim $(fzf --preview="bat --color=always {}")'
 alias fy='yazi $(fzf --preview="bat --color=always {}")'
 #sites-----------------
@@ -155,38 +156,14 @@ msh() {
   sudo docker exec -it "$name" mongosh
 }
 
-mim() {
-  local name=${1:-mongodb} # Default to "mongodb" if no container name is provided
-  local type=${2:-json}    # Default import type to "json" if not provided
-  local database=${3:-}    # Default to null/empty
-  local collection=${4:-}  # Default to null/empty
-  local filePath=${5:-}    # Default to null/empty
-
-  # Build the mongoimport command dynamically based on provided values
-  cmd="sudo docker exec -it \"$name\" mongoimport --type \"$type\""
-
-  # Append database option if provided
-  if [[ -n "$database" ]]; then
-    cmd+=" --db \"$database\""
-  fi
-
-  # Append collection option if provided
-  if [[ -n "$collection" ]]; then
-    cmd+=" --collection \"$collection\""
-  fi
-
-  # Append filePath option if provided
-  if [[ -n "$filePath" ]]; then
-    cmd+=" --file \"$filePath\""
-  fi
-
-  # Run the constructed command
-  eval "$cmd"
-}
-
 drm() {
   local session=${1:mongodb}
   sudo docker rm -f "$session"
+}
+frm() {
+  local appName=${1:-}
+  rm ~/.local/share/applications/"$appName".desktop
+
 }
 alias dps="sudo docker ps"
 #----------------------

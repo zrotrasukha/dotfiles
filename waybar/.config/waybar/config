@@ -25,6 +25,7 @@
         // "custom/clipboard",
         // "custom/power"
     ],
+    
     "custom/launcher": {
         "format": "{}",
         "tooltip": true,
