@@ -1,5 +1,3 @@
-# .bashrc
-
 # bindings
 set -o vi
 # Source global definitions
@@ -113,7 +111,7 @@ alias tl="tmux resize-pane -L"
 #layout-----------------
 alias us='hyprctl keyword input:kb_variant "us"'
 alias cl='hyprctl keyword input:kb_variant "colemak"'
-#mongodb----------------
+#mongodb and docker-----
 alias dp='sudo docker pull mongodb/mongodb-community-server:latest'
 alias keys='nvim /home/zrotrasukha/dotfiles/nvim/.config/nvim/lua/config/keymaps.lua'
 drun() {
@@ -126,7 +124,6 @@ drun() {
     -p "$port":27017 \
     -d mongo:latest
 }
-
 darn() {
   local name=${1:-mongodb}
   sudo docker run --rm --name "$name" -it mongo mongosh "mongodb+srv://cluster0.7xf16.mongodb.net/" --apiVersion 1 --username zrotrasukha
@@ -155,7 +152,6 @@ msh() {
   local port=${2:-27017}   # Default to port 27017 if no port is provided
   sudo docker exec -it "$name" mongosh
 }
-
 drm() {
   local session=${1:mongodb}
   sudo docker rm -f "$session"
@@ -166,7 +162,14 @@ frm() {
 
 }
 alias dps="sudo docker ps"
-#----------------------
+#httpie-----------------
+hl() {
+  local method=${1:-GET}
+  local port=${2:-3000}
+  local endPoints=${3-}
+  http "$method" http://localhost:"$port"/"$endPoints"
+}
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 eval "$(fzf --bash)"
