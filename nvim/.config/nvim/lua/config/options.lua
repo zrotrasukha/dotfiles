@@ -4,7 +4,7 @@ vim.opt.termguicolors = true
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
-
+vim.opt.spell = false
 vim.opt.number = true
 vim.opt.title = true
 vim.opt.autoindent = true

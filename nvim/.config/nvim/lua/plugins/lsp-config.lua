@@ -20,6 +20,10 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local lspconfig = require("lspconfig")
+      lspconfig.tailwindcss.setup({
+        on_attatch = function(clinet, bufnr) end,
+        capabilities = capabilities,
+      })
       lspconfig.tsserver.setup({
         capabilities = capabilities,
       })

@@ -132,7 +132,7 @@ alias way "nvim ~/.config/waybar"
 alias b "nvim ~/.bashrc"
 alias plugs "nvim ~/.config/nvim/lua/plugins/"
 alias conf "nvim ~/.config/hypr/hyprland.conf"
-alias obs "nvim /home/zrotrasukha/MEGA/MEGA/Knowledge_and_Info"
+alias obs /home/zrotrasukha/MEGA/MEGA/Knowledge_and_Info
 alias blue "nvim ~/.config/hypr/shaders/blue-light-filter.glsl"
 alias 100 "cd /home/zrotrasukha/MEGA/MEGA/100xDev"
 
@@ -223,6 +223,45 @@ set -gx VISUAL nvim
 set -gx BUN_INSTALL "$HOME/.bun"
 set -gx PATH $BUN_INSTALL/bin $PATH
 set -gx PATH $PATH /home/zrotrasukha/.spicetify
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
