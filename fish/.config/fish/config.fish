@@ -45,8 +45,6 @@ end
 #
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # set -gx SYSTEMD_PAGER ""
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-echo 'eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >>~/.config/fish/config.fish
 # Source user-specific configurations in ~/.bashrc.d (converted to Fish equivalent)
 if test -d ~/.bashrc.d
     for rc in ~/.bashrc.d/*
@@ -93,6 +91,7 @@ alias wifi "nmcli dev wifi"
 alias wifir "nmcli radio wifi"
 alias bt bluetoothctl
 alias q exit
+alias x exit
 
 # Bluetooth power functions
 function bton
@@ -223,59 +222,3 @@ set -gx VISUAL nvim
 set -gx BUN_INSTALL "$HOME/.bun"
 set -gx PATH $BUN_INSTALL/bin $PATH
 set -gx PATH $PATH /home/zrotrasukha/.spicetify
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)

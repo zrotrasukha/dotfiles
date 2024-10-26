@@ -257,8 +257,15 @@ vim.api.nvim_set_keymap("n", "<leader>lc", ":lua require('harpoon.term').sendCom
 
 -- Tmux navigation (e.g., tmux window 1)
 vim.api.nvim_set_keymap("n", "<leader>x1", ":lua require('harpoon.tmux').gotoTerminal(1)<CR>", opts)
-
 -- Send command to tmux terminal (e.g., send `ls -La` to tmux window 1)
+vim.keymap.set("n", "<leader>t", function()
+  vim.fn.system("tmux split-window -v") -- Horizontal split in Tmux
+end)
+
+vim.keymap.set("n", "<leader>tv", function()
+  vim.fn.system("tmux split-window -h") -- Horizontal split in Tmux
+end)
+
 vim.api.nvim_set_keymap("n", "<leader>xc", ":lua require('harpoon.tmux').sendCommand(1, 'ls -La')<CR>", opts)
 
 -- Telescope support for harpoon marks
@@ -268,7 +275,7 @@ vim.api.nvim_set_keymap("n", "<leader>fm", ":Telescope harpoon marks<CR>", opts)
 vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
 
 -- open file_browser with the path of the current buffer
-vim.keymap.set("n", "<space>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
+vim.keymap.set("n", "<space>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
 
 -- Alternatively, using lua API
 vim.keymap.set("n", "<space>fb", function()
