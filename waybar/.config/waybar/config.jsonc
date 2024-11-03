@@ -7,6 +7,7 @@
         // "memory",
         // "temperature",
         // "disk",
+       "hyprland/window" ,
         "custom/updates"
     ],
     "modules-center": [
@@ -107,10 +108,8 @@
         "max-length": 35
     },
     "hyprland/window": {
-        "format": "{}",
-        "separate-outputs": true,
-        "max-length": 35
-    },
+        "format": "{class}",
+    }, 
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format": "↕{bandwidthTotalBytes}",
@@ -202,9 +201,9 @@
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "<span foreground='red'><sup></sup></span>",
+            "notification": "<span foreground='#DCA344'><sup></sup></span>",
             "none": "",
-            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-notification": "<span foreground='#DCA344'><sup></sup></span>",
             "dnd-none": ""
         },
         "return-type": "json",

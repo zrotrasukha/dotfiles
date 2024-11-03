@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Check for media player status with playerctl
+status=$(playerctl status 2>/dev/null)
+
+# Define icon based on status
+case "$status" in
+"Playing")
+  icon="" # Play icon, feel free to customize
+  ;;
+"Paused")
+  icon="󱖐" # Pause icon
+  ;;
+"Stopped" | "")
+  icon="" # Stop icon with RTL override
+  ;;
+*)
+  icon="" # Default to stop icon if unknown status
+  ;;
+esac
+
+# Output in JSON format for Waybar
+echo "{\"text\": \"$icon\", \"alt\": \"$status\"}"

@@ -85,13 +85,17 @@
 #custom-weather {
   background-color: @surface0;
   color: @text;
-  border-radius: 16px;
+  border: 2px solid #DCA344;
+  border-radius: 12px;
   padding: 0.5rem 1rem;
   box-shadow: rgba(0, 0, 0, 0.116) 2px 2px 5px 2px;
   margin-top: 10px;
-  margin-right: 15px; /* Increased right margin for spacing */
+  margin-right: 12px; /* Increased right margin for spacing */
 }
-
+window#waybar.empty #window {  
+  border-style: none; 
+ background:none;  
+}  
 /* =============================== */
 /* Launcher Module */
 #custom-launcher {
