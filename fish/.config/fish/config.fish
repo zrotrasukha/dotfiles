@@ -1,6 +1,6 @@
 # Vi mode for Fish
 set -g fish_greeting
-
+bind \ce autosuggest-accept
 fish_vi_key_bindings
 
 # Source global definitions (Fish equivalent)
@@ -28,11 +28,12 @@ function yy
     set -l tmp (mktemp -t "yazi-cwd.XXXXXX")
     yazi $argv --cwd-file "$tmp"
     set -l cwd (cat "$tmp")
-    if test -n "$cwd" -a "$cwd" ! "$PWD"
+    if test -n "$cwd" -a "$cwd" != "$PWD"
         cd "$cwd"
     end
     rm -f "$tmp"
 end
+
 
 # Homebrew environment setup
 if test -d ~/.linuxbrew
@@ -43,6 +44,26 @@ end
 set -gx NVM_DIR "$HOME/.nvm"
 set -gx PATH $PATH $PWD/lua_env/bin
 set -gx TREESITTER_DIR ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter/parser
+
+# functions: 
+function g
+    # Check if two arguments are provided
+    if test (count $argv) -eq 2
+        # Compile the first argument to the file named in the second argument
+        g++ $argv[1] -o $argv[2] && ./$argv[2]
+
+        # Check if only one argument is provided
+    else if test (count $argv) -eq 1
+        # Compile the file to a default temporary location
+        g++ $argv[1] -o /tmp/cpp_program && /tmp/cpp_program
+        # Delete the temporary file after running it
+        rm -f /tmp/cpp_program
+
+        # If there are no arguments or more than two, print usage message
+    else
+        echo "Usage: runcpp <source-file> [output-name]"
+    end
+end
 
 # Aliases
 alias fs "nvim ~/.config/fish/config.fish"
@@ -83,7 +104,10 @@ alias tns "tmux new-session -s"
 alias tks "tmux kill-session -t"
 alias tka "tmux kill-server"
 alias tas "tmux attach-session -t"
-
+alias td "tmux resize-pane -D"
+alias tu "tmux resize-pane -U"
+alias tr "tmux resize-pane -R"
+alias tl "tmux resize-pane -L"
 # Coding files
 alias way "nvim ~/.config/waybar"
 alias b "nvim ~/.config/fish/config.fish"
@@ -169,3 +193,5 @@ set -gx VISUAL nvim
 set -gx BUN_INSTALL "$HOME/.bun"
 set -gx PATH $BUN_INSTALL/bin $PATH
 set -gx PATH $PATH /home/zrotrasukha/.spicetify
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
