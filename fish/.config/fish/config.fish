@@ -65,7 +65,12 @@ function g
     end
 end
 
+#tmuxifier
+set -gx PATH $PATH ~/.tmuxifier/bin
+eval (tmuxifier init - fish)
+
 # Aliases
+alias fire tmuxifier
 alias fs "nvim ~/.config/fish/config.fish"
 alias y yazi
 alias blueon "hyprshade on blue-light-filter"
@@ -89,6 +94,7 @@ eval (starship init fish)
 alias sb "source ~/.config/fish/config.fish"
 alias v nvim
 alias lss "pactl list short sinks"
+alias co "pactl set-default-sink"
 alias c clear
 alias ccp "cliphist wipe"
 alias rd "hyprctl reload"
@@ -108,6 +114,7 @@ alias td "tmux resize-pane -D"
 alias tu "tmux resize-pane -U"
 alias tr "tmux resize-pane -R"
 alias tl "tmux resize-pane -L"
+alias ts "tmux swap-window -t"
 # Coding files
 alias way "nvim ~/.config/waybar"
 alias b "nvim ~/.config/fish/config.fish"
@@ -116,7 +123,7 @@ alias conf "nvim ~/.config/hypr/hyprland.conf"
 alias obs "nvim /home/zrotrasukha/MEGA/MEGA/Knowledge_and_Info"
 alias blue "nvim ~/.config/hypr/shaders/blue-light-filter.glsl"
 alias 100 "cd /home/zrotrasukha/MEGA/MEGA/100xDev"
-
+alias coding "cd /home/zrotrasukha/MEGA/MEGA/coding-ground"
 # fzf Aliases
 alias f 'cd (fzf --preview "bat --color always {}")'
 alias fn 'nvim (fzf --preview "bat --color always {}")'
@@ -138,7 +145,7 @@ function drun
 end
 function darn
     set -l name (or $argv[1] "mongodb")
-    sudo docker run --rm --name "$name" -it mongo mongosh "mongodb+srv://cluster0.7xf16.mongodb.net/" --apiVersion 1 --username zrotrasukha
+    sudo docker run --rm --name "$name" -it mongo mongosh "mongodb+srv://cluster1.kbh42.mongodb.net/" --apiVersion 1 --username zrotrasukha
 end
 function dexp
     set -l dbName (or $argv[1] "test")
