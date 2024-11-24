@@ -116,6 +116,7 @@ alias tr "tmux resize-pane -R"
 alias tl "tmux resize-pane -L"
 alias ts "tmux swap-window -t"
 # Coding files
+alias chai "cd ~/MEGA/MEGA/Chai_aur_react"
 alias way "nvim ~/.config/waybar"
 alias b "nvim ~/.config/fish/config.fish"
 alias plugs "nvim ~/.config/nvim/lua/plugins/"

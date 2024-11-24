@@ -130,17 +130,4 @@ ls.add_snippets("javascriptreact", {
 			"npx tailwindcss init -p",
 		}),
 	}),
-	s("com", {
-		t("{/*"),
-		i(1),
-		t("*/}"),
-	}),
-})
-
-ls.add_snippets("tsx", {
-	s("com", {
-		t("{/*"),
-		i(1),
-		t("*/}"),
-	}),
 })
