@@ -67,7 +67,7 @@ ls.add_snippets("javascript", {
 			"],",
 		}),
 	}),
-	s("arrow", {
+	s("arf", {
 		t("const "),
 		i(1, "name"),
 		t(" = ("),
