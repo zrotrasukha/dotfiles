@@ -102,7 +102,7 @@ alias sus "systemctl suspend"
 alias ncs "nmcli connection show"
 alias open xdg-open
 alias cfp "pwd | wl-copy"
-
+alias sleep "systemctl suspend"
 # Tmux Aliases
 alias t tmux
 alias ta "tmux attach-session"

@@ -1,5 +1,5 @@
 # vim:fileencoding=utf-8:ft=conf
-background_opacity 0.9
+background_opacity 1
 
 # Font family. You can also specify different fonts for the
 # bold/italic/bold-italic variants. By default they are derived automatically,
@@ -75,8 +75,8 @@ enabled_layouts *
 # size as the previous instance. If disabled, the window will initially have size configured
 # by initial_window_width/height, in pixels.
 remember_window_size   no
-initial_window_width   640
-initial_window_height  400
+initial_window_width  1000 
+initial_window_height 600 
 
 # Delay (in milliseconds) between screen updates. Decreasing it, increases fps
 # at the cost of more CPU usage. The default value yields ~100fps which is more
@@ -163,6 +163,6 @@ window_margin_width 15
 
 
 # BEGIN_KITTY_THEME
-# Ciapre
+# Darkside
 include current-theme.conf
 # END_KITTY_THEME
