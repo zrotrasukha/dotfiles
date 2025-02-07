@@ -47,7 +47,7 @@ require("lazy").setup({
 })
 
 -- Explicitly set your colorscheme after all plugins have loaded
-vim.cmd.colorscheme("mellow") -- Replace with your preferred colorscheme
+vim.cmd.colorscheme("catppuccin") -- Replace with your preferred colorscheme
 
-require("config.luasnip")
+-- require("config.luasnip")
 require("config.autocmds")

@@ -70,22 +70,38 @@ set -gx PATH $PATH ~/.tmuxifier/bin
 eval (tmuxifier init - fish)
 
 # Aliases
+alias blset 'gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature'
+
 alias fire tmuxifier
 alias fs "nvim ~/.config/fish/config.fish"
 alias y yazi
 alias blueon "hyprshade on blue-light-filter"
-alias bo "hyprshade on blue-light-filter"
+alias bo "gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true"
 alias blueoff "hyprshade off"
-alias bf "hyprshade off"
+alias bf "gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled false"
+alias nd "pnpm run dev"
 alias wifi "nmcli dev wifi"
 alias wifir "nmcli radio wifi"
 alias bt bluetoothctl
 alias q exit
+#for sound 
+alias vo "systemctl --user enable --now pulseaudio"
+# for brightness control 
+function bset
+    set -l power (or $argv[1] "50")
+    echo $argv[1] | sudo tee /sys/class/backlight/amdgpu_bl1/brightness
+end
+
 function bton
     bluetoothctl power on
 end
 function btoff
     bluetoothctl power off
+end
+
+function wb
+    set -l location (or $argv[1] "")
+    /opt/WebStorm-243.22562.222/bin/webstorm $location && disown
 end
 alias snips "nvim /home/zrotrasukha/dotfiles/nvim/.config/nvim/lua/config/luasnip.lua"
 alias dots "cd ~/dotfiles"
