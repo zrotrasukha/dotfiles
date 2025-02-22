@@ -1,4 +1,4 @@
-# Vi mode for Fish
+#s Vi mode for Fish
 set -g fish_greeting
 bind \ce autosuggest-accept
 fish_vi_key_bindings
@@ -69,9 +69,13 @@ end
 set -gx PATH $PATH ~/.tmuxifier/bin
 eval (tmuxifier init - fish)
 
-# Aliases
-alias blset 'gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature'
+#git-aliases
+alias gd "git diff "
+alias gc "commit -m"
 
+# general Aliases
+alias blset 'gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature'
+alias bat batcat
 alias fire tmuxifier
 alias fs "nvim ~/.config/fish/config.fish"
 alias y yazi
@@ -119,6 +123,7 @@ alias ncs "nmcli connection show"
 alias open xdg-open
 alias cfp "pwd | wl-copy"
 alias sleep "systemctl suspend"
+alias keys "v ~/.config/nvim/lua/config/keymaps.lua"
 # Tmux Aliases
 alias t tmux
 alias ta "tmux attach-session"
