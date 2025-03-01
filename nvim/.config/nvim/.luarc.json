@@ -1,8 +1,0 @@
-{
-    "diagnostics.globals": [
-        "write_all_buffers"
-    ],
-    "diagnostics.disable": [
-        "redundant-value"
-    ]
-}

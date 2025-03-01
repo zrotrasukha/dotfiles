@@ -10,14 +10,6 @@ if true then return {} end
 -- * override the configuration of LazyVim plugins
 return {
   -- add gruvbox
-
-  {
-    "L3MON4D3/LuaSnip",
-    dependencies = {
-      "saadparwaiz1/cmp_luasnip", -- Integrates LuaSnip with nvim-cmp
-      "rafamadriz/friendly-snippets", -- Optional: Predefined snippets
-    },
-  },
   { "ellisonleao/gruvbox.nvim" },
 
   -- Configure LazyVim to load gruvbox
@@ -142,7 +134,6 @@ return {
         "typescript",
         "vim",
         "yaml",
-        "clangd",
       },
     },
   },
@@ -166,7 +157,11 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function(_, opts)
-      table.insert(opts.sections.lualine_x, "😄")
+      table.insert(opts.sections.lualine_x, {
+        function()
+          return "😄"
+        end,
+      })
     end,
   },
 

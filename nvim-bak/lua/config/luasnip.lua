@@ -1,7 +1,11 @@
 local ls = require("luasnip")
+
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
+local f = ls.function_node
+
+local fmt = require("luasnip.extras.fmt").fmt
 
 -- Key mappings for expanding and jumping within snippets
 vim.keymap.set({ "i", "s" }, "<A-n>", function()
@@ -67,7 +71,7 @@ ls.add_snippets("javascript", {
 			"],",
 		}),
 	}),
-	s("arrow", {
+	s("arf", {
 		t("const "),
 		i(1, "name"),
 		t(" = ("),
@@ -130,4 +134,49 @@ ls.add_snippets("javascriptreact", {
 			"npx tailwindcss init -p",
 		}),
 	}),
+	s("com", {
+		t("{/*"),
+		i(1),
+		t("*/}"),
+	}),
+	s(
+		"use",
+		fmt(
+			[[
+const [{}, set{}] = useState({});
+]],
+			{
+				i(1, "state"), -- First placeholder for state name
+				f(function(args)
+					-- Capitalize the first letter of the state name for the setter
+					return args[1][1]:gsub("^%l", string.upper)
+				end, { 1 }),
+				i(2, "initialValue"), -- Placeholder for the initial value
+			}
+		)
+	),
+})
+
+ls.add_snippets("typescript", {
+	s("com", {
+		t("{/*"),
+		i(1),
+		t("*/}"),
+	}),
+	s(
+		"use",
+		fmt(
+			[[
+const [{}, set{}] = useState({});
+]],
+			{
+				i(1, "state"), -- First placeholder for state name
+				f(function(args)
+					-- Capitalize the first letter of the state name for the setter
+					return args[1][1]:gsub("^%l", string.upper)
+				end, { 1 }),
+				i(2, "initialValue"), -- Placeholder for the initial value
+			}
+		)
+	),
 })

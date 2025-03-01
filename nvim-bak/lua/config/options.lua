@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 vim.opt.termguicolors = true
-
+vim.o.cmdheight = 0
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"

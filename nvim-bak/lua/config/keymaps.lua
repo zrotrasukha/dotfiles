@@ -1,6 +1,16 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+--copilot
+-- Accept completion
+vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
+	expr = true,
+	replace_keycodes = false,
+})
+
+vim.g.copilot_no_tab_map = true
+vim.keymap.set("i", "<C-L>", "<Plug>(copilot-accept-word)")
+
 -- visual delete: no clipboard:
 vim.api.nvim_set_keymap("v", "d", '"_d', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "p", '"0p', { noremap = true, silent = true })
@@ -17,85 +27,6 @@ keymap.set("n", "<leader>ls", ":LiveServerStart<CR>", opts)
 keymap.set("n", "<leader>lt", ":LiveServerStop<CR>", opts)
 
 -- Obsidian.nvim Commands
--- Open a note in the Obsidian app
-keymap.set("n", "<leader>oo", ":ObsidianOpen<CR>", opts)
-
--- Create a new note
-keymap.set("n", "<leader>on", ":ObsidianNew<CR>", opts)
-
--- Quickly switch to another note
-keymap.set("n", "<leader>oq", ":ObsidianQuickSwitch<CR>", opts)
-
--- Follow a note reference under the cursor
-keymap.set("n", "<leader>of", ":ObsidianFollowLink<CR>", opts)
-
--- Open a vertical split and follow the note reference
-keymap.set("n", "<leader>ovs", ":ObsidianFollowLink vsplit<CR>", opts)
-
--- Open a horizontal split and follow the note reference
-keymap.set("n", "<leader>ohs", ":ObsidianFollowLink hsplit<CR>", opts)
-
--- Get a picker list of references to the current buffer
-keymap.set("n", "<leader>ob", ":ObsidianBacklinks<CR>", opts)
-
--- Get a picker list of all occurrences of the given tags
-keymap.set("n", "<leader>ot", ":ObsidianTags<CR>", opts)
-
--- Open or create today's daily note
-keymap.set("n", "<leader>otd", ":ObsidianToday<CR>", opts)
-
--- Open or create yesterday's daily note
-keymap.set("n", "<leader>oy", ":ObsidianYesterday<CR>", opts)
-
--- Open or create tomorrow's daily note
-keymap.set("n", "<leader>om", ":ObsidianTomorrow<CR>", opts)
-
--- Open a picker list of daily notes
-keymap.set("n", "<leader>od", ":ObsidianDailies<CR>", opts)
-
--- Insert a template from the templates folder
-keymap.set("n", "<leader>oi", ":ObsidianTemplate<CR>", opts)
-
--- Search for (or create) notes in your vault
-keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", opts)
-
--- Link an inline visual selection of text to a note
-keymap.set("v", "<leader>ol", ":ObsidianLink<CR>", opts)
-
--- Create a new note and link it to an inline visual selection of text
-keymap.set("v", "<leader>onl", ":ObsidianLinkNew<CR>", opts)
-
--- Collect all links within the current buffer into a picker window
-keymap.set("n", "<leader>olk", ":ObsidianLinks<CR>", opts)
-
--- Extract the visually selected text into a new note and link to it
-keymap.set("v", "<leader>oe", ":ObsidianExtractNote<CR>", opts)
-
--- Switch to another workspace
-keymap.set("n", "<leader>ow", ":ObsidianWorkspace<CR>", opts)
-
--- Paste an image from the clipboard into the note
-keymap.set("n", "<leader>op", ":ObsidianPasteImg<CR>", opts)
-
--- Rename the note of the current buffer or reference under the cursor
-keymap.set("n", "<leader>orn", ":ObsidianRename<CR>", opts)
-
--- Toggle checkbox options
-keymap.set("n", "<leader>oc", ":ObsidianToggleCheckbox<CR>", opts)
-
--- Create a new note from a template in the templates folder
-keymap.set("n", "<leader>ont", ":ObsidianNewFromTemplate<CR>", opts)
-
--- Load the table of contents of the current note into a picker list
-keymap.set("n", "<leader>otoc", ":ObsidianTOC<CR>", opts)
-
--- Prevent "dd" from copying to clipboard
--- keymap.set("n", "dd", '"_dd', opts)
-
--- Delete character without copying to clipboard
--- keymap.set("n", "X", '"_x', opts)
-
--- Increment/decrement
 keymap.set("n", "+", "<C-a>", opts)
 keymap.set("n", "-", "<C-x>", opts)
 
@@ -129,20 +60,20 @@ keymap.set("n", "<C-S-j>", "<C-w>-", opts)
 
 -- Diagnostics
 keymap.set("n", "<C-A-j>", function()
-  vim.diagnostic.goto_next()
+	vim.diagnostic.goto_next()
 end, opts)
 
 -- Save file
 -- Save current file and show notification
 keymap.set("n", "<leader>s", function()
-  vim.cmd("w")
-  vim.notify("File saved!", vim.log.levels.INFO)
+	vim.cmd("w")
+	vim.notify("File saved!", vim.log.levels.INFO)
 end, opts)
 
 -- Save all files and show notification
 keymap.set("n", "<leader>S", function()
-  vim.cmd("wa")
-  vim.notify("All files saved!", vim.log.levels.INFO)
+	vim.cmd("wa")
+	vim.notify("All files saved!", vim.log.levels.INFO)
 end, opts)
 
 -- Automate Compilation and Execution with a Keybinding
@@ -156,8 +87,8 @@ keymap.set("n", "<leader>rp", ":RunProject<CR>", opts)
 keymap.set("n", "<leader>rc", ":RunClose<CR>", opts)
 keymap.set("n", "<leader>crf", ":CRFiletype<CR>", opts)
 keymap.set("n", "<leader>crp", ":CRProjects<CR>", opts)
--- keymap.set("n", "<leader>e", ":Oil<CR>", opts)
 -- Move line up
+keymap.set("n", "<leader>e", ":Neotree<CR>", opts)
 keymap.set("n", "<A-Up>", ":m .-2<CR>==", opts)
 keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", opts)
 
@@ -220,10 +151,10 @@ vim.keymap.set("n", "<c-P>", require("fzf-lua").files, { desc = "Fzf Files" })
 -- Copy file directory while being in buffer
 -- Define the key mapping
 vim.api.nvim_set_keymap(
-  "n", -- Mode: Normal mode
-  "<leader>cp", -- Shortcut: Leader key followed by 'cp'
-  [[:let @+=expand('%:p:h')<CR>]], -- Command: Copy the file directory of the current buffer to the clipboard
-  opts -- Options: No remap, silent execution
+	"n", -- Mode: Normal mode
+	"<leader>cp", -- Shortcut: Leader key followed by 'cp'
+	[[:let @+=expand('%:p:h')<CR>]], -- Command: Copy the file directory of the current buffer to the clipboard
+	opts -- Options: No remap, silent execution
 )
 
 -- Set leader key to space (optional)
@@ -259,11 +190,11 @@ vim.api.nvim_set_keymap("n", "<leader>lc", ":lua require('harpoon.term').sendCom
 vim.api.nvim_set_keymap("n", "<leader>x1", ":lua require('harpoon.tmux').gotoTerminal(1)<CR>", opts)
 -- Send command to tmux terminal (e.g., send `ls -La` to tmux window 1)
 vim.keymap.set("n", "<leader>t", function()
-  vim.fn.system("tmux split-window -v") -- Horizontal split in Tmux
+	vim.fn.system("tmux split-window -v") -- Horizontal split in Tmux
 end)
 
 vim.keymap.set("n", "<leader>tv", function()
-  vim.fn.system("tmux split-window -h") -- Horizontal split in Tmux
+	vim.fn.system("tmux split-window -h") -- Horizontal split in Tmux
 end)
 
 vim.api.nvim_set_keymap("n", "<leader>xc", ":lua require('harpoon.tmux').sendCommand(1, 'ls -La')<CR>", opts)
@@ -272,14 +203,14 @@ vim.api.nvim_set_keymap("n", "<leader>xc", ":lua require('harpoon.tmux').sendCom
 vim.api.nvim_set_keymap("n", "<leader>fm", ":Telescope harpoon marks<CR>", opts)
 
 -- Telescope file browser
-vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
+-- vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
 
 -- open file_browser with the path of the current buffer
-vim.keymap.set("n", "<space>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
+-- vim.keymap.set("n", "<space>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
 
 -- Alternatively, using lua API
 vim.keymap.set("n", "<space>fb", function()
-  require("telescope").extensions.file_browser.file_browser()
+	require("telescope").extensions.file_browser.file_browser()
 end)
 
 -- vim.api.nvim_set_keymap("n", "p", '"0p', { noremap = true, silent = true })
