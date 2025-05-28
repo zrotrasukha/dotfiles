@@ -2,6 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+vim.api.nvim_set_keymap("n", "<F5>", ":w<CR>:!g++ -std=c++17 % -o %< && ./%<<CR>", { noremap = true })
+
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
