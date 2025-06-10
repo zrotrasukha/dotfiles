@@ -107,6 +107,7 @@ function wb
     set -l location (or $argv[1] "")
     /opt/WebStorm-243.22562.222/bin/webstorm $location && disown
 end
+alias logout "gnome-session-quit --logout --no-prompt"
 alias snips "nvim /home/zrotrasukha/dotfiles/nvim/.config/nvim/lua/config/luasnip.lua"
 alias dots "cd ~/dotfiles"
 set -gx STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
